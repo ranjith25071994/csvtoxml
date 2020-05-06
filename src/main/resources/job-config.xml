@@ -1,0 +1,15 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:batch="http://www.springframework.org/schema/batch" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/batch	http://www.springframework.org/schema/batch/spring-batch-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.2.xsd">
+
+
+    <bean id="runScheduler" class="com.hicap.springbatch.RunScheduler" />
+    <!-- Run every 10 seconds -->
+    <task:scheduled-tasks>
+        <task:scheduled ref="runScheduler" method="run" cron="*/10 * * * * *" />
+    </task:scheduled-tasks>
+
+</beans>
